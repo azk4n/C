@@ -98,8 +98,8 @@ int main(){
 		do{	
 			printf("0 -> quit\n");
 			printf("1 -> show queue\n");
-			printf("2 -> add node in queue\n");
-			printf("3 -> remove node in queue\n");
+			printf("2 -> enqueue\n");
+			printf("3 -> dequeue\n");
 			printf("4 -> free queue\n");
 			printf("opt: "); scanf("%d", &opt);
 		

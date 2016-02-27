@@ -165,8 +165,7 @@ int main(){
 			    }break;
 			case 6:
 				freeList(list);
-				list->next = NULL;
-				size = 0;
+				startList(list);
 				break;
 				default:
 				if(opt != 0) printf("take valid option\n\n");
