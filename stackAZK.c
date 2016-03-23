@@ -14,7 +14,6 @@ void startStack(no *stack){
 	size = 0;
 }
 
-
 int testEmpty(no *stack){
 	if(stack->next == NULL) return 1;
 	else return 0;
@@ -28,7 +27,6 @@ no *pusher(){
 	}
 	return new;
 }
-
 
 void push(no *stack){
 	no *new = pusher();
