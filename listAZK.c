@@ -1,12 +1,9 @@
 /* a simple linked list in C
- 
- * functions: remove/insert on head/end 
- * 			  show list 
+
+ * functions: remove/insert on head/end
+ * 			  show list
  * 			  erase list (free)
-
-  writer: azk4n
-
-*/
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,11 +14,11 @@ typedef struct NO{
 }no;
 
 // global vars
-int size; 
+int size;
 no *tmp = NULL;
 // ----------
 
-void startList(no *list){ 
+void startList(no *list){
 	list->next = NULL;
 	size = 0;
 }
@@ -31,14 +28,14 @@ int testEmpty(no *list){
 	else return 0;
 }
 
-no *malloking(){ 
+no *malloking(){
 	no *new = (no *) malloc(sizeof(no));
 	if(!new){
 		 printf("no memory\n");
 		 return NULL;
 	}else{
 		printf("\ntake the nem element: ");
-		scanf("%d", &new->data); 
+		scanf("%d", &new->data);
 		printf("\n");
 		return new;
 	}
@@ -48,20 +45,20 @@ void insertOnEnd(no *list){
 	no *new = malloking();
 	new->next = NULL;
 	if(testEmpty(list)){
-		list->next = new; 
+		list->next = new;
 	}else{
 		tmp = list->next;
 		while(tmp->next != NULL){
 			tmp = tmp->next;
-		}tmp->next = new; 	
+		}tmp->next = new;
 	}size++;
 }
 
 void insertOnHead(no *list){
 	no *new = malloking();
 	no *oldHead = list->next;
-	
-	list->next = new; 
+
+	list->next = new;
 	new->next = oldHead;
 	size++;
 }
@@ -80,13 +77,13 @@ no *removeOnEnd(no *list){
 		llast->next = NULL;
 		size--;
 		return last;
-	}   
+	}
 
 }
 
 no *removeOnHead(no *list){
-	if(testEmpty(list)){ 
-		printf("\n\nempty list\n\n"); 
+	if(testEmpty(list)){
+		printf("\n\nempty list\n\n");
 		return NULL;
 	}else{
 		tmp = list->next;
@@ -95,13 +92,13 @@ no *removeOnHead(no *list){
 		return tmp;
 	}
 }
-		
+
 void showList(no *list){
-	if(testEmpty(list)){ 
-		printf("\n\nempty list\n\n"); 
-		return; 
+	if(testEmpty(list)){
+		printf("\n\nempty list\n\n");
+		return;
 	}
-	tmp = list->next; 
+	tmp = list->next;
 	system("clear");
 	while(tmp != NULL){
 		printf("%d ", tmp->data);
@@ -124,11 +121,11 @@ void freeList(no *list){
 }
 
 int main(){
-	
+
 	no *list = (no*) malloc(sizeof(list));
 	if(!list) printf("\n\nno memory\n\n");
 	else startList(list);
-		
+
 		int opt;
 		do{
 		printf("0 -> quit\n");
@@ -139,12 +136,12 @@ int main(){
 		printf("5 -> remove on the head\n");
 		printf("6 -> free the list\n");
 		printf("opt: "); scanf("%d", &opt);
-		
+
 		switch(opt){
 			case 1:
 				insertOnEnd(list);
 				break;
-			case 2: 
+			case 2:
 				insertOnHead(list);
 				break;
 			case 3:
@@ -156,7 +153,7 @@ int main(){
 			    printf("\nelement removed: %d\n\n", tmp->data);
 			    free(tmp);
 			   } break;
-			
+
 			case 5:
 				tmp = removeOnHead(list);
 			    if(tmp != NULL){
@@ -169,9 +166,9 @@ int main(){
 				break;
 				default:
 				if(opt != 0) printf("take valid option\n\n");
-				
+
 		}
 	}while(opt != 0);
-	
+
 		return 0;
 	}
